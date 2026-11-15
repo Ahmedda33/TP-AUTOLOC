@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/api/reservations/{{reservationId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "dateDebut": "2026-11-03",
+      "dateFin": "2026-11-07"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 200", () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 7000

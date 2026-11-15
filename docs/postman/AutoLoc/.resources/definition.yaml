@@ -1,0 +1,2 @@
+$kind: collection
+description: Atelier 5 - API REST AutoLoc. Choisir l'environnement « local ». Ordre des dossiers = ordre d'exécution (les identifiants sont mémorisés dans l'environnement).

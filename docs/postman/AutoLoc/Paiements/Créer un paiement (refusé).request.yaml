@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/api/paiements"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "montant": 10.0
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 405", () => pm.response.to.have.status(405));
+    language: text/javascript
+order: 4000

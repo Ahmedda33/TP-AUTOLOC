@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{baseUrl}}/api/vehicules/{{vehiculeId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "immatriculation": "321-TU-654",
+      "marque": "Renault",
+      "modele": "Clio 5",
+      "categorie": "CITADINE",
+      "tarifJournalier": 95.0,
+      "statut": "DISPONIBLE"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 200", () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 7000
