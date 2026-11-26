@@ -6,7 +6,7 @@ workspace:
 
 cloudResources:
   collections:
-    ../postman/collections/AutoLoc: e68607da-8bc4-458d-856a-dd360b7c0170
+    ../postman/collections/AutoLoc - API complète (Atelier 7): a6f49abf-c128-4f76-963e-93234b9dd1c1
 
 # All resources in the `postman/` folder are automatically registered in Local View.
 # Point to additional files outside the `postman/` folder to register them individually. Example:

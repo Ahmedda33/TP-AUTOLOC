@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{baseUrl}}/employes"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nom": "Trabelsi",
+      "prenom": "Ali",
+      "role": "AGENT",
+      "agence": {
+        "idAgence": {{agenceId}}
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Statut 201", () => pm.response.to.have.status(201));
+      pm.collectionVariables.set("employeId", pm.response.json().idEmploye);
+    language: text/javascript
+order: 1000

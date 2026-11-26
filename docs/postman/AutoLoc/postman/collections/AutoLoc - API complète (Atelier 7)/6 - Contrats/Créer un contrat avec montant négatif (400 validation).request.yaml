@@ -1,0 +1,16 @@
+$kind: http-request
+url: "{{baseUrl}}/contrats"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "montantTotal": -1
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 400", () => pm.response.to.have.status(400));
+    language: text/javascript
+order: 6000

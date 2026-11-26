@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/clients"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nom": "Ben Ali",
+      "prenom": "Sami",
+      "email": "abc",
+      "telephone": "20123456",
+      "numPermis": "P123456"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 400", () => pm.response.to.have.status(400));
+    language: text/javascript
+order: 6000

@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/clients/{{clientId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nom": "Ben Ali",
+      "prenom": "Sami",
+      "email": "sami@autoloc.tn",
+      "telephone": "22999888",
+      "numPermis": "P123456"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 200", () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 4000

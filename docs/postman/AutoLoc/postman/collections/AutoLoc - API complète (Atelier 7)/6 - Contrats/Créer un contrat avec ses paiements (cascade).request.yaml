@@ -1,0 +1,25 @@
+$kind: http-request
+url: "{{baseUrl}}/contrats"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "dateSignature": "2026-11-20",
+      "montantTotal": 480.0,
+      "valide": true,
+      "paiements": [
+        {
+          "montant": 200.0,
+          "datePaiement": "2026-11-20",
+          "modePaiement": "CARTE"
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 201", () => pm.response.to.have.status(201));
+    language: text/javascript
+order: 2000

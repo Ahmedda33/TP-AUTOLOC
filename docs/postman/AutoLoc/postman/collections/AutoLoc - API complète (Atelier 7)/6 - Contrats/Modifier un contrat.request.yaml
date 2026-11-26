@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{baseUrl}}/contrats/{{contratId}}"
+method: PUT
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "dateSignature": "2026-11-21",
+      "montantTotal": 520.0,
+      "valide": true
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 200", () => pm.response.to.have.status(200));
+    language: text/javascript
+order: 5000

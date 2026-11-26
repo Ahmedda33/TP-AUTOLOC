@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{baseUrl}}/agences"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "id": 5,
+      "nom": "Agence Tunis Centre",
+      "ville": "Tunis",
+      "adresse": "Avenue Habib Bourguiba",
+      "telephone": "71000000"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 400", () => pm.response.to.have.status(400));
+    language: text/javascript
+order: 7000

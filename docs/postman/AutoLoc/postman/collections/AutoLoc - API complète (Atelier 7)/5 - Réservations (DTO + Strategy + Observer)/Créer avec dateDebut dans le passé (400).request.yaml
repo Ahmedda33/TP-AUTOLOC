@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{baseUrl}}/reservations"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "clientId": {{clientId}},
+      "vehiculeId": {{vehiculeId}},
+      "dateDebut": "2020-01-01",
+      "dateFin": "2026-12-05"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test("Statut 400", () => pm.response.to.have.status(400));
+    language: text/javascript
+order: 6000
